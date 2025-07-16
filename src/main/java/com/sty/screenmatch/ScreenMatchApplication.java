@@ -1,5 +1,6 @@
 package com.sty.screenmatch;
 
+import com.sty.screenmatch.model.DadosEpisodio;
 import com.sty.screenmatch.model.DadosSerie;
 import com.sty.screenmatch.service.ConsumoApi;
 import org.springframework.boot.CommandLineRunner;
@@ -21,5 +22,8 @@ public class ScreenMatchApplication implements CommandLineRunner {
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+		json = consumoApi.obterDados("https://omdbapi.com/?t=gilmore+girls&season=1&episode=2&apiKey=6585022c");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
